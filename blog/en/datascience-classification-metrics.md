@@ -92,3 +92,5 @@ Depending on the cost of errors, classification models should not be evaluated u
 | Accuracy  | (TP + TN) / total                  |
 | Precision | TP / (TP + FP)                     |
 | Recall    | TP / (all positive cases: TP + FN) |
+
+> [*Read in french*](../fr/datascience-metriques-classification)
