@@ -7,7 +7,7 @@ If you are interested in data science or AI, you have probably already come acro
 
 These metrics can sometimes be confusing, so I thought I would share some elements and examples I felt were insightful.
 
-![Classification metrics](../_files/datascience-classification-metrics-1.png)
+![Classification metrics](https://github.com/cchantep/cchantep.github.io/blob/main/blog/_files/datascience-classification-metrics-1.png?raw=true)
 
 ### Confusion matrix
 
@@ -42,7 +42,7 @@ At the slightest doubt, the bot raises an alert: prevention is better than cure.
 - However, some safe foods are incorrectly flagged as risky (False Positive).
 - Consequently, the chef hates the bot, which sees 🥜 everywhere — even in mashed potatoes.
 
-![Paranoid](../_files/datascience-classification-metrics-2.png)
+![Paranoid](https://github.com/cchantep/cchantep.github.io/blob/main/blog/_files/datascience-classification-metrics-2.png?raw=true)
 
 **🧘 Zen**
 
@@ -53,7 +53,7 @@ The bot tries to avoid unnecessary warnings and prefers not to cry wolf.
 - However, some risky foods are missed (*False Negative*).
 - The chef is happier, but allergic users have less protection.
 
-![Zen](../_files/datascience-classification-metrics-3.png)
+![Zen](https://github.com/cchantep/cchantep.github.io/blob/main/blog/_files/datascience-classification-metrics-3.png?raw=true)
 
 **ℹ️ Summary**
 
