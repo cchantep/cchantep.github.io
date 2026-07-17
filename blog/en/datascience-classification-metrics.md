@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Understanding Classification Metrics in Data Science
 date: 2026-07-17
 ---
