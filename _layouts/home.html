@@ -16,7 +16,11 @@ layout: default
   <ul>
     {% for post in posts %}
       <li>
-        <a href="{{ page.url | relative_url }}">{{ page.title }}</a> ({{ page.date }})
+        <a href="{{ blog.url | relative_url }}">{{ blog.title }}</a>
+
+        <time datetime="{{ post.date | date_to_xmlschema }}">
+          {{ post.date | date: "%Y-%m-%d" }}
+        </time>
       </li>
     {% endfor %}
   </ul>
