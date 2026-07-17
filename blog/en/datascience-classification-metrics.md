@@ -1,3 +1,8 @@
+---
+layout: post 
+date: 2026-07-17
+---
+
 ## Understanding Classification Metrics in Data Science
 
 **Classification** is one of the most common applications of data science, for example predicting whether an email is spam.
