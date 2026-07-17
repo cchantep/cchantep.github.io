@@ -2,10 +2,16 @@
 layout: default
 ---
 
-<article>
-  <h1>{{ page.title }}</h1>
+<h2>{{ page.title }}</h2>
 
-  <article>
-    {{ content }}
-  </article>
-</article>
+<div class="article-header">
+  {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+  {% assign pdate = page.date | date_to_xmlschema %}
+
+  <p>
+    <span>{{ site.title }}</span>
+    <time datetime="{{ pdate }}">{{ pdate | date: date_format }}</time>
+  </p>
+</div>
+
+{{ content }}
