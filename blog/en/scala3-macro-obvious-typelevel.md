@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Scala 3 macros: when type-level "obvious" doesn't actually work'
+title: Scala 3 macros: when type-level "obvious" doesn't actually work
 date: 2026-06-10
 ---
 
