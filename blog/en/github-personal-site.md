@@ -62,7 +62,8 @@ The layout decides whether and where this information appears.
 
 A minimal `_layouts/post.html` override is enough:
 
-```markdown
+{% raw %}
+```liquid
 ---
 layout: default
 ---
@@ -81,6 +82,7 @@ layout: default
   {{ content }}
 </article>
 ```
+{% endraw %}
 
 The rest of the theme remains untouched.
 
