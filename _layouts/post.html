@@ -10,7 +10,6 @@ layout: default
     {% assign pdate = page.date | date_to_xmlschema %}
 
     <p>
-      <span>{{ site.title }}</span>
       <time datetime="{{ pdate }}">{{ pdate | date: date_format }}</time>
     </p>
   </header>
