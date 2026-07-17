@@ -4,9 +4,7 @@ title: A User-Centric Delivery Workflow
 date: 2026-06-24
 ---
 
-# A User-Centric Delivery Workflow
-
-## From User Needs to Production: A Practical Delivery Workflow
+### From User Needs to Production: A Practical Delivery Workflow
 
 We often focus on technologies, frameworks, and tools. Yet successful delivery remains primarily about people, responsibilities, feedback loops, and quality gates, even as AI empowers every role across the delivery lifecycle.
 
@@ -18,7 +16,7 @@ The workflow described below reflects patterns I have experienced across softwar
 
 At its core, this workflow is **user-centric**.
 
-## Starting from user needs
+### Starting from user needs
 
 Everything starts with users and their needs.
 
@@ -37,7 +35,7 @@ Once shared with the delivery team, these needs are progressively refined into a
 
 While this step introduces structure, it should not create distance from users. Teams benefit greatly from maintaining the ability to return to users whenever additional clarification is required.
 
-## From understanding to implementation
+### From understanding to implementation
 
 With a clear understanding of the problem to solve, implementation can begin.
 
@@ -54,7 +52,7 @@ The exact branching strategy is not important here. Teams may adopt GitFlow, tru
 
 The important aspect is maintaining a reliable flow from change to validation.
 
-## Review as a feedback loop
+### Review as a feedback loop
 
 As changes are produced, reviewers enter the loop.
 
@@ -67,7 +65,7 @@ Review is not merely a technical formality. It allows peers, technical leads, an
 
 The feedback generated during review creates short feedback loops that improve the work before it progresses further.
 
-## Automation and continuous integration
+### Automation and continuous integration
 
 Automation provides another layer of confidence.
 
@@ -89,7 +87,7 @@ The objective is simple:
 
 Passing code review and automated checks does not necessarily mean a feature is ready for users.
 
-## Quality assurance and user validation
+### Quality assurance and user validation
 
 This is where the QA perspective becomes valuable.
 
@@ -104,7 +102,7 @@ Beyond verifying that a feature works, QA evaluates whether it:
 
 Code quality and product quality are related, but they are not the same thing.
 
-## From validated changes to deployable artifacts
+### From validated changes to deployable artifacts
 
 Once the appropriate validations are complete, CI can package and publish deployable artifacts:
 
@@ -116,7 +114,7 @@ Once the appropriate validations are complete, CI can package and publish deploy
 
 These artifacts are stored in a repository that becomes the trusted source for deployments.
 
-## Release management and deployment
+### Release management and deployment
 
 At this stage, release management responsibilities come into play.
 
@@ -136,7 +134,7 @@ When the expected checks have been completed successfully, and under the respons
 
 Users can then access the new version and provide feedback, restarting the cycle.
 
-## Operating the system
+### Operating the system
 
 Once in production, the focus shifts toward operational excellence.
 
@@ -158,7 +156,7 @@ In reality, observability should not be limited to production alone. It is equal
 
 The diagram intentionally simplifies this aspect to preserve readability.
 
-## Feedback loops are part of the process
+### Feedback loops are part of the process
 
 The workflow should not be interpreted as a strictly linear sequence.
 
@@ -173,7 +171,7 @@ Examples:
 
 These loops are not failures of the process. They are how teams learn and improve.
 
-## Roles are responsibilities, not job titles
+### Roles are responsibilities, not job titles
 
 The roles shown in the workflow should not be confused with job titles or individual people.
 
@@ -189,7 +187,7 @@ Examples:
 - **QA Specialists** may be dedicated QA engineers, Product Owners, Proxy Product Owners, UX leads, or anyone responsible for validating the user and product perspective.
 - **The Release Engineer role** may be assumed by technical leads, platform engineers, or dedicated release managers.
 
-## AI as a delivery accelerator
+### AI as a delivery accelerator
 
 Despite the current excitement around Artificial Intelligence, the fundamental workflow remains largely unchanged.
 
@@ -223,7 +221,7 @@ The workflow remains the same, but the people moving through it become increasin
 
 That is perhaps the most significant transformation AI brings to modern delivery organizations.
 
-## Notes
+### Notes
 
 - The workflow should be adapted to each project's context, organization, delivery strategy, and tooling ecosystem.
 - The roles shown are responsibilities, not necessarily dedicated individuals.
