@@ -4,8 +4,6 @@ title: Understanding Classification Metrics in Data Science
 date: 2026-07-17
 ---
 
-## Understanding Classification Metrics in Data Science
-
 **Classification** is one of the most common applications of data science, for example predicting whether an email is spam.
 
 There are metrics that can be quite useful to understand the performance of data science classification algorithms/models: **accuracy**, **precision** and **recall**.
