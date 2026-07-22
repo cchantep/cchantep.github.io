@@ -1,4 +1,6 @@
-## Big Data Solutions Architect / Tech Lead
+## Distributed Systems & Platform Engineer
+
+**Tech Lead / Software Architect**
 
 Senior architect and engineering leader with 20+ years of experience designing and delivering large-scale distributed systems and data platforms.
 
