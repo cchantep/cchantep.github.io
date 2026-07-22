@@ -90,6 +90,9 @@ The rest of the theme remains untouched.
 
 A homepage can also remain very simple.
 Instead of introducing a dedicated blogging engine, Liquid can generate a list directly from the pages already known by Jekyll:
+
+{% raw %}
+```liquid
 {% assign posts = site.pages
   | where_exp: "p", "p.path contains 'blog/en/'"
   | sort: "date"
@@ -111,6 +114,8 @@ Instead of introducing a dedicated blogging engine, Liquid can generate a list d
   </li>
 {% endfor %}
 </ul>
+```
+{% endraw %}
 
 The content files remain the source of truth, and the index is generated automatically.
 
