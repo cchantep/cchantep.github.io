@@ -1,17 +1,15 @@
----
-more_page: '/articles.html'
-limit: -1
----
+{% assign limit = include.limit | default: -1 %}
+{% assign more_page = include.more_page | default: '/articles.html' %}
 {% assign posts = site.pages
   | where_exp: "p", "p.path contains 'blog/en/'"
   | sort: "date"
   | reverse
 %}
 {% assign post_count = posts | size %}
-{% if include.limit == -1 %}
+{% if limit == -1 %}
   {% assign l = post_count %}
 {% else %}
-  {% assign l = include.limit %}
+  {% assign l = limit %}
 {% endif %}
 
 <ul>
@@ -25,6 +23,6 @@ limit: -1
 </ul>
 {% if l > post_count %}
 <nav>
-  <a href="{{ include.more_page }}">See all</a>
+  <a href="{{ more_page }}">See all</a>
 </nav>
 {% endif %}

@@ -9,4 +9,10 @@ layout: default
   {% include articles.html limit=5 %}
 </nav>
 
+<h2>📌 Open source</h2>
+
+{% capture github_url %}https://github.com/{{site.data.github.user}}/{% endcapture %}
+site.data.github
+<p>🐙 <a href="{{ github_url }}" target="_blank" rel="me">{{site.data.github.user}}</a> @ GitHub</p>
+
 {% include github_repositories.html repositories=site.data.github.repositories %}
