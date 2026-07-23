@@ -3,23 +3,10 @@ layout: default
 ---
 {{ content }}
 
-
-{% assign posts = site.pages
-  | where_exp: "p", "p.path contains 'blog/en/'"
-  | sort: "date"
-  | reverse
-%}
-
 <h2>✍️ Articles</h2>
 
 <nav>
-  <ul>
-    {% for post in posts %}
-      <li>
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-
-        <time class="parenthesized" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
-      </li>
-    {% endfor %}
-  </ul>
+  {% include articles.html limit=5 %}
 </nav>
+
+{% include github_repositories.html repositories=site.data.github.repositories %}

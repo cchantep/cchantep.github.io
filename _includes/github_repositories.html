@@ -1,0 +1,5 @@
+<div class="repositories">
+{% for repository in include.repositories %}
+  {% include github_repo_card.html owner=repository.owner repo=repository.repo %}
+{% endfor %}
+</div>

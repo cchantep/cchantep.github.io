@@ -1,0 +1,154 @@
+/* Repository grid container */
+.repositories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1rem;
+}
+
+/* GitHub repository card */
+.github-repo-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+
+    height: 100%;
+    box-sizing: border-box;
+
+    padding: 1rem;
+
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.github-repo-card:hover {
+    border-color: #0969da;
+
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.08);
+
+    transform: translateY(-1px);
+}
+
+/* Loading / error states */
+.github-repo-card__loading {
+    color: #57606a;
+}
+
+.github-repo-card--error {
+    border-color: #cf222e;
+}
+
+/* Title */
+.github-repo-card__title {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.github-repo-card__title a {
+    color: #0969da;
+
+    text-decoration: none;
+
+    overflow-wrap: anywhere;
+}
+
+.github-repo-card__title a:hover,
+.github-repo-card__title a:focus-visible {
+    text-decoration: underline;
+}
+
+/* Description */
+.github-repo-card__description {
+    flex: 1;
+
+    min-height: 2.8em;
+
+    color: #57606a;
+
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+
+/* Footer */
+.github-repo-card__footer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    margin-top: auto;
+
+    color: #57606a;
+
+    font-size: 0.875rem;
+}
+
+/* Language */
+.github-repo-card__language {
+    display: flex;
+    align-items: center;
+}
+
+.github-language-dot {
+    display: inline-block;
+
+    width: 0.75rem;
+    height: 0.75rem;
+
+    margin-right: 0.4rem;
+
+    border-radius: 50%;
+
+    flex-shrink: 0;
+}
+
+/* Stars */
+.github-repo-card__stars {
+    display: flex;
+    align-items: center;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    .github-repo-card {
+        border-color: #30363d;
+
+        background: #0d1117;
+    }
+
+    .github-repo-card:hover {
+        border-color: #58a6ff;
+    }
+
+    .github-repo-card__title a {
+        color: #58a6ff;
+    }
+
+    .github-repo-card__description,
+    .github-repo-card__footer,
+    .github-repo-card__loading {
+        color: #8b949e;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .github-repo-card {
+        transition: none;
+    }
+
+    .github-repo-card:hover {
+        transform: none;
+    }
+}

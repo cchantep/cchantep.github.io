@@ -1,0 +1,24 @@
+repositories:
+  - owner: zengularity
+    repo: benji
+
+  - owner: cchantep
+    repo: tnuctipun
+
+  - owner: ReactiveMongo
+    repo: ReactiveMongo
+
+  - owner: cchantep
+    repo: nuggan
+
+  - owner: playframework
+    repo: anorm
+
+  - owner: scala-ts
+    repo: scala-ts
+
+  - owner: cchantep
+    repo: melasse
+
+  - owner: cchantep
+    repo: acolyte

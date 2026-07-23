@@ -1,0 +1,30 @@
+---
+more_page: '/articles.html'
+limit: -1
+---
+{% assign posts = site.pages
+  | where_exp: "p", "p.path contains 'blog/en/'"
+  | sort: "date"
+  | reverse
+%}
+{% assign post_count = posts | size %}
+{% if include.limit == -1 %}
+  {% assign l = post_count %}
+{% else %}
+  {% assign l = include.limit %}
+{% endif %}
+
+<ul>
+  {% for post in posts limit: l %}
+  <li>
+    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    
+    <time class="parenthesized" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+  </li>
+  {% endfor %}
+</ul>
+{% if l > post_count %}
+<nav>
+  <a href="{{ include.more_page }}">See all</a>
+</nav>
+{% endif %}
