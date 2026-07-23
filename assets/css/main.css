@@ -90,6 +90,10 @@ h6 {
     color: var(--color-fg);
 }
 
+body > .markdown-body h2 {
+  border-bottom: none
+}
+
 p {
     color: var(--color-fg);
 }

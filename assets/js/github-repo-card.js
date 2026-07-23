@@ -37,7 +37,7 @@ function renderRepository(card, repository) {
         </div>
 
         <div class="github-repo-card__description">
-            ${repository.description || ""}
+          ${renderEmoji(repository.description)}
         </div>
 
         <div class="github-repo-card__footer">
@@ -77,4 +77,23 @@ const LANGUAGE_COLORS = {
 
 function languageColor(language) {
   return LANGUAGE_COLORS[language] || "#8b949e";
+}
+
+const EMOJI = {
+    tiger: "🐯",
+    wrench: "🔧",
+    leaves: "🍃",
+    paperclip: "📎",
+    file_folder: "📁"
+};
+
+function renderEmoji(text) {
+  if (!text) {
+    return "";
+  }
+
+  return text.replace(
+      /:([a-z0-9_+-]+):/g,
+    (match, name) => EMOJI[name] || match
+  );
 }
