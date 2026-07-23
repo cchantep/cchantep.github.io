@@ -1,8 +1,8 @@
 user: cchantep
 
 repositories:
-  - owner: zengularity
-    repo: benji
+  - owner: cchantep
+    repo: jinbe
 
   - owner: cchantep
     repo: tnuctipun
