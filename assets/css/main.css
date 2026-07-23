@@ -13,6 +13,14 @@
     --color-link: #0969da;
     --color-link-hover: #0550ae;
 
+    --table-bg: #ffffff;
+    --table-header-bg: #f6f8fa;
+    --table-row-alt-bg: #f6f8fa;
+    --table-border: #d0d7de;
+    --table-text: #1f2328;
+    --table-code-bg: #f6f8fa;
+    --table-code-text: #24292f;
+
     --highlight-bg: #f6f8fa;
     --syntax-nt-color: #000080;
     --syntax-comment: #6a737d;
@@ -33,6 +41,14 @@
 
         --color-link: #58a6ff;
         --color-link-hover: #79c0ff;
+
+        --table-bg: #0d1117;
+        --table-header-bg: #161b22;
+        --table-row-alt-bg: #161b22;
+        --table-border: #30363d;
+        --table-text: #e6edf3;
+        --table-code-bg: #21262d;
+        --table-code-text: #c9d1d9;
 
         --highlight-bg: #21262d;
         --syntax-nt-color: #79c0ff;
@@ -121,6 +137,51 @@ hr {
 
 .text-muted {
     color: var(--color-fg-muted);
+}
+
+/* ============================================================
+   Table
+   ============================================================ */
+.markdown-body table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background: var(--table-bg);
+    color: var(--table-text);
+}
+
+.markdown-body thead {
+    background: var(--table-header-bg);
+}
+
+.markdown-body th,
+.markdown-body td {
+    padding: .5rem .75rem;
+
+    border:
+        1px solid var(--table-border);
+
+    text-align: left;
+}
+
+.markdown-body th {
+    font-weight: 600;
+}
+
+.markdown-body tbody tr:nth-child(even) {
+    background: var(--table-row-alt-bg);
+}
+
+.markdown-body td code {
+    padding: .15em .35em;
+
+    border-radius: 4px;
+
+    background: var(--table-code-bg);
+    color: var(--table-code-text);
+
+    font-size: .9em;
 }
 
 /* ============================================================
