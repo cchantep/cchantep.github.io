@@ -11,7 +11,7 @@ Si vous vous intéressez à la data science ou à l'IA, vous avez probablement d
 
 Ces métriques peuvent parfois prêter à confusion, c'est pourquoi je souhaitais partager quelques éléments et exemples que j'ai trouvés particulièrement éclairants.
 
-![Métriques de classification](https://github.com/cchantep/cchantep.github.io/blob/main/blog/_files/datascience-classification-metrics-1.png?raw=true)
+![Métriques de classification](../../assets/images/datascience-classification-metrics-1.png)
 
 ### Matrice de confusion
 
@@ -46,7 +46,7 @@ Au moindre doute, le robot déclenche une alerte : mieux vaut prévenir que gué
 - Cependant, certains plats sans risque sont incorrectement signalés comme risqués (*False Positive*).
 - Au final, le chef déteste le robot, qui voit des 🥜 partout — même dans la purée.
 
-![Paranoïaque](https://github.com/cchantep/cchantep.github.io/blob/main/blog/_files/datascience-classification-metrics-2.png?raw=true)
+![Paranoïaque](../../assets/images/datascience-classification-metrics-2.png)
 
 **🧘 Zen**
 
@@ -57,7 +57,7 @@ Le robot cherche à éviter les alertes inutiles et préfère éviter de crier a
 - Cependant, certains plats à risque ne sont pas détectés (*False Negative*).
 - Le chef est plus heureux, mais les personnes allergiques sont moins bien protégées.
 
-![Zen](https://github.com/cchantep/cchantep.github.io/blob/main/blog/_files/datascience-classification-metrics-3.png?raw=true)
+![Zen](../../assets/images/datascience-classification-metrics-3.png)
 
 **ℹ️ Résumé**
 
