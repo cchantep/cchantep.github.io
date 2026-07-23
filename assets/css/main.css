@@ -12,6 +12,13 @@
 
     --color-link: #0969da;
     --color-link-hover: #0550ae;
+
+    --highlight-bg: #f6f8fa;
+    --syntax-nt-color: #000080;
+    --syntax-comment: #6a737d;
+    --syntax-keyword: #d73a49;
+    --syntax-string: #032f62;
+    --syntax-name-tag: #000080;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,6 +33,13 @@
 
         --color-link: #58a6ff;
         --color-link-hover: #79c0ff;
+
+        --highlight-bg: #21262d;
+        --syntax-nt-color: #79c0ff;
+        --syntax-comment: #8b949e;
+        --syntax-keyword: #ff7b72;
+        --syntax-string: #a5d6ff;
+        --syntax-name-tag: #79c0ff;
     }
 }
 
@@ -107,4 +121,34 @@ hr {
 
 .text-muted {
     color: var(--color-fg-muted);
+}
+
+/* ============================================================
+   Highlight
+   ============================================================ */
+body > .markdown-body .highlight,
+body > .markdown-body .highlight pre,
+body > .markdown-body pre {
+  background-color: var(--highlight-bg);
+}
+
+body > .markdown-body .highlight {
+  border-radius: 4px;
+  padding: 0.1em 0.3em;
+}
+
+body > .markdown-body .highlight .c {
+    color: var(--syntax-comment);
+}
+
+body > .markdown-body .highlight .k {
+    color: var(--syntax-keyword);
+}
+
+body > .markdown-body .highlight .s {
+    color: var(--syntax-string);
+}
+
+body > .markdown-body .highlight .nt {
+    color: var(--syntax-name-tag);
 }
