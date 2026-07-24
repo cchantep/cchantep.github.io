@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+<article>
+  <h2>{{ page.title }}</h2>
+
+  <header>
+    {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+    {% assign from = page.from | date_to_xmlschema %}
+    {% assign to = page.to | date_to_xmlschema %}
+
+    <p>
+      <time datetime="{{ from }}">{{ from | date: date_format }}</time>
+      - <time datetime="{{ to }}">{{ to | date: date_format }}</time>
+    </p>
+  </header>
+
+  {{ content }}
+
+  <footer>
+    <p><strong>Environment:</strong> {{ page.environment }}</p>
+  </footer>
+</article>
