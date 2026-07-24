@@ -3,7 +3,7 @@ layout: portfolio
 title: 'Distributed Geospatial Imaging Platform (R&D)'
 from: 10-2015
 to: 2017
-environment: 'Apache Spark, Kafka, MongoDB, S3/GCS, Akka, Play Framework, Scala, C++, JVM Native Bindings, Distributed Systems'
+environment: 'Apache Spark, Kafka, MongoDB, AWS, Ceph, Google Cloud, JNI'
 ---
 
 Designed a proof of concept for a scalable geospatial data platform exploring efficient ingestion, processing, and serving of large-scale raster imagery through a tiled image representation. The architecture supports both near real-time visualization and large-scale asynchronous processing while remaining modular and technology-agnostic.
@@ -12,7 +12,7 @@ Designed a proof of concept for a scalable geospatial data platform exploring ef
 
 - Designed a distributed architecture based on independent services with clear responsibilities across ingestion, processing, storage, and visualization layers
 
-- Built a Spark-based ingestion pipeline to import and pre-process raster datasets, generating optimized tile representations stored in object storage while maintaining separate metadata indexing
+- Built a **Spark** ingestion pipeline to import and pre-process raster datasets, generating optimized tile representations stored in object storage while maintaining separate metadata indexing
 
 - Implemented scalable runtime components to dynamically assemble and render only the data required for each request, minimizing storage access and computation overhead
 
@@ -25,6 +25,6 @@ Designed a proof of concept for a scalable geospatial data platform exploring ef
 
 - Developed reusable libraries for geospatial algorithms, processing workflows, and image rendering, enabling reuse across web services, distributed Spark jobs, and batch pipelines
 
-- Integrated heterogeneous technologies including Apache Spark, Kafka, MongoDB, S3/GCS object storage, Akka, Play Framework, and native C++ image-processing components through JVM bindings
+- Integrated heterogeneous technologies including Apache Spark, Kafka, MongoDB, S3/GCS object storage, Akka, Play Framework, and **native C++ image-processing** components through JVM bindings
 
 - Established a modular approach to distributed geospatial data platforms, allowing ingestion, processing, storage, and visualization capabilities to evolve independently while sharing common data models, APIs, and infrastructure
