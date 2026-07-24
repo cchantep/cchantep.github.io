@@ -4,6 +4,8 @@ title: 'Railway Predictive Maintenance Platform'
 from: 11-2020
 to: 12-2025
 environment: 'Apache Spark, Confluent Kafka, Kubernetes, AWS, MongoDB Atlas, CI/CD, Datadog, Distributed Systems'
+short_description: "Led the architecture and delivery of a large-scale predictive maintenance data platform for a major railway operator, processing high-volume telemetry and time-series data."
+image: portfolio-1.png
 ---
 
 Led the architecture and delivery of a large-scale predictive maintenance data platform for a major railway operator, processing high-volume telemetry and time-series data using **Apache Spark** deployed on **Kubernetes (AWS)**. Acted as technical lead and solution architect, working closely with product owners, data scientists, and full-stack teams to deliver a production-grade, ML-ready data platform.

@@ -4,6 +4,8 @@ title: 'Unified Data Platform for Supply Chain & Product Information Management'
 from: 02-2017
 to: 10-2017
 environment: 'Kafka, Akka, Scala, Cassandra, Elasticsearch, ELK Stack, MongoDB, REST APIs, Distributed Systems, Event-Driven Architecture'
+short_description: "Designed and evolved a unified data platform for supply chain and product information management, consolidating data from multiple retail brands and countries."
+image: portfolio-3.png
 ---
 
 Designed and evolved a unified data platform for supply chain and product information management, consolidating data from multiple retail brands and countries into a consistent domain model. The platform integrates product catalogs, point-of-sale inventory, marketplace information, and enterprise PIM systems such as Akeneo and Mirakl through a unified API layer for downstream applications and services.

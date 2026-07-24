@@ -4,9 +4,11 @@ title: 'Distributed Geospatial Imaging Platform (R&D)'
 from: 10-2015
 to: 2017
 environment: 'Apache Spark, Kafka, MongoDB, AWS, Ceph, Google Cloud, JNI'
+short_description: "Designed a proof of concept for a scalable geospatial data platform exploring efficient ingestion, processing, and serving of large-scale satellite imagery."
+image: portfolio-2.png
 ---
 
-Designed a proof of concept for a scalable geospatial data platform exploring efficient ingestion, processing, and serving of large-scale raster imagery through a tiled image representation. The architecture supports both near real-time visualization and large-scale asynchronous processing while remaining modular and technology-agnostic.
+Designed a proof of concept for a scalable geospatial data platform exploring efficient ingestion, processing, and serving of large-scale satellite imagery through a tiled image representation. The architecture supports both near real-time visualization and large-scale asynchronous processing while remaining modular and technology-agnostic.
 
 ## Key responsibilities and achievements
 
