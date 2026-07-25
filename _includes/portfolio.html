@@ -29,12 +29,11 @@
           </p>
 
           {% if item.keywords %}
-          <ul class="portfolio-card__keywords">
-            {% assign keywords = item.keywords | split: ',' %}
-            {% for keyword in keywords %}
-            <li>{{ keyword }}</li>
+          <div class="portfolio-card__tags">
+            {% for keyword in item.keywords %}
+            <span class="portfolio-card__tag">{{ keyword }}</span>
             {% endfor %}
-          </ul>
+          </div>
           {% endif %}
 
           <a class="portfolio-card__details"
