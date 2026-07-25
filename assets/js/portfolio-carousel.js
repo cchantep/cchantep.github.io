@@ -4,64 +4,49 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
 
   const previous = carousel.querySelector(".portfolio-carousel__prev");
   const next = carousel.querySelector(".portfolio-carousel__next");
-  const dots = carousel.querySelector(".portfolio-carousel__dots");
 
   let current = 0;
 
-  function update() {
-    track.style.transform = `translateX(-${current * 100}%)`;
+  function visibleSlides() {
+    const containerWidth = track.parentElement.clientWidth;
+    const slideWidth = slides[0].getBoundingClientRect().width;
 
-    dots.querySelectorAll("button").forEach((dot, index) => {
-      dot.setAttribute(
-        "aria-current",
-        index === current ? "true" : "false"
-      );
-    });
+    return Math.max(1, Math.floor(containerWidth / slideWidth));
   }
 
-  // Create navigation dots
-  slides.forEach((_, index) => {
-    const dot = document.createElement("button");
+  function maxIndex() {
+    return Math.max(0, slides.length - visibleSlides());
+  }
 
-    dot.type = "button";
-    dot.className = "portfolio-carousel__dot";
-    dot.setAttribute(
-      "aria-label",
-      `Go to project ${index + 1}`
-    );
+  function updateNavigation() {
+    const hasOverflow = slides.length > visibleSlides();
 
-    dot.addEventListener("click", () => {
-      current = index;
-      update();
-    });
+    previous.classList.toggle("is-hidden", !hasOverflow);
+    next.classList.toggle("is-hidden", !hasOverflow);
 
-    dots.appendChild(dot);
-  });
+    current = Math.min(current, maxIndex());
+  }
+
+  function update() {
+    const slideWidth = slides[0].getBoundingClientRect().width;
+
+    track.style.transform =
+      `translateX(-${current * slideWidth}px)`;
+
+    updateNavigation();
+  }
 
   previous.addEventListener("click", () => {
-    current = current > 0 ? current - 1 : slides.length - 1;
+    current = Math.max(0, current - 1);
     update();
   });
 
   next.addEventListener("click", () => {
-    current = current < slides.length - 1 ? current + 1 : 0;
+    current = Math.min(maxIndex(), current + 1);
     update();
   });
 
-  // Keyboard navigation
-  carousel.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowLeft") {
-      current = current > 0 ? current - 1 : slides.length - 1;
-      update();
-    }
-
-    if (event.key === "ArrowRight") {
-      current = current < slides.length - 1 ? current + 1 : 0;
-      update();
-    }
-  });
-
-  carousel.tabIndex = 0;
+  window.addEventListener("resize", update);
 
   update();
 });

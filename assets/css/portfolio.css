@@ -85,6 +85,11 @@
   right: .5rem;
 }
 
+.portfolio-carousel__prev.is-hidden,
+.portfolio-carousel__next.is-hidden {
+  display: none;
+}
+
 /* Dots */
 .portfolio-carousel__dots {
   display: flex;
@@ -104,15 +109,19 @@
   cursor: pointer;
 }
 
-/* Desktop: show multiple cards */
+/* mobile */
+.portfolio-card {
+  flex-basis: 100%;
+}
+
+/* >= 900px */
 @media (min-width: 900px) {
   .portfolio-card {
     flex-basis: 50%;
   }
 }
 
-
-/* Large screens */
+/* >= 1200px */
 @media (min-width: 1200px) {
   .portfolio-card {
     flex-basis: 33.333%;
