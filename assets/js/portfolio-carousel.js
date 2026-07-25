@@ -19,12 +19,21 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
   }
 
   function updateNavigation() {
-    const hasOverflow = slides.length > visibleSlides();
+    const max = maxIndex();
+
+    // Hide navigation if everything fits
+    const hasOverflow = max > 0;
 
     previous.classList.toggle("is-hidden", !hasOverflow);
     next.classList.toggle("is-hidden", !hasOverflow);
 
-    current = Math.min(current, maxIndex());
+    if (!hasOverflow) {
+      return;
+    }
+
+    // Disable unavailable directions
+    previous.disabled = current === 0;
+    next.disabled = current === max;
   }
 
   function update() {
@@ -37,16 +46,23 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
   }
 
   previous.addEventListener("click", () => {
-    current = Math.max(0, current - 1);
-    update();
+    if (current > 0) {
+      current--;
+      update();
+    }
   });
 
   next.addEventListener("click", () => {
-    current = Math.min(maxIndex(), current + 1);
-    update();
+    if (current < maxIndex()) {
+      current++;
+      update();
+    }
   });
 
-  window.addEventListener("resize", update);
+  window.addEventListener("resize", () => {
+    current = Math.min(current, maxIndex());
+    update();
+  });
 
   update();
 });
