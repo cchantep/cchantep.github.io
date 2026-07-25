@@ -2,7 +2,9 @@
 layout: post
 title: Building a personal site with GitHub Pages
 date: 2026-07-17
-
+keywords:
+  - github
+  - blog
 ---
 
 **Minimal customization, maximum focus on content**
@@ -11,7 +13,7 @@ Creating a personal website often starts with a simple goal: having a place to s
 
 The technical choices can quickly become the main challenge though. Choosing a framework, designing a theme, building layouts, and maintaining custom styling can consume more time than actually writing content.
 
-For a personal technical site, a different approach works well: start from what GitHub Pages already provides, understand the underlying Jekyll model, and customize only the parts that genuinely add value.
+For a personal technical site, a different approach works well: start from what **GitHub Pages** already provides, understand the underlying Jekyll model, and customize only the parts that genuinely add value.
 
 This article does not cover the GitHub Pages setup process itself; the [official documentation](https://docs.github.com/fr/pages/quickstart) already explains how to create and publish a site. Instead, it focuses on what happens after that initial setup and how to adapt the default behavior with minimal effort.
 

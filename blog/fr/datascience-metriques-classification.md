@@ -2,6 +2,10 @@
 layout: post
 title: Comprendre les métriques de classification en data science
 date: 2026-07-16
+keywords:
+  - datascience
+  - metrics
+  - machine learning
 ---
 
 La **classification** est l'une des applications les plus courantes de la data science, par exemple pour prédire si un email est un spam ou non.

@@ -1,3 +1,8 @@
+---
+enable_github_repo: true
+enable_portfolio: true
+---
+
 ## Distributed Systems & Platform Engineer
 
 **Tech Lead / Software Architect**

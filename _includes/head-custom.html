@@ -9,6 +9,19 @@
 </style>
 
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-<link rel="stylesheet" href="{{ '/assets/css/github-repo-card.css' | relative_url }}">
 
+{% if page.enable_github_repo %}
+<link rel="stylesheet" href="{{ '/assets/css/github-repo-card.css' | relative_url }}">
+{% endif %}
+
+{% if page.enable_portfolio %}
+<link rel="stylesheet" href="{{ '/assets/css/portfolio.css' | relative_url }}">
+{% endif %}
+
+{% if page.enable_github_repo %}
 <script src="{{ '/assets/js/github-repo-card.js' | relative_url }}" defer></script>
+{% endif %}
+
+{% if page.enable_portfolio %}
+<script src="{{ '/assets/js/portfolio-carousel.js' | relative_url }}" defer></script>
+{% endif %}

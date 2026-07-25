@@ -1,0 +1,62 @@
+{% assign portfolio = site.pages
+  | where_exp: "p", "p.path contains 'portfolio/'"
+  | sort: "name"
+%}
+
+<section class="portfolio-carousel" data-carousel aria-label="Portfolio">
+  <div class="portfolio-carousel__viewport">
+    <div class="portfolio-carousel__track">
+
+      {% for item in portfolio %}
+      <article class="portfolio-card">
+
+        {% if item.image %}
+        <img
+          class="portfolio-card__image"
+          src="{{ '/assets/images/portfolio/' | append: item.image | relative_url }}"
+          alt="{{ item.title }}"
+          loading="lazy">
+        {% endif %}
+
+        <div class="portfolio-card__content">
+
+          <h2 class="portfolio-card__title">
+            <a href="{{ item.url | relative_url }}">
+              {{ item.title }}
+            </a>
+          </h2>
+
+          {% if item.short_description %}
+          <p class="portfolio-card__description">
+            {{ item.short_description }}
+          </p>
+          {% endif %}
+
+          {% if item.keywords %}
+          <ul class="portfolio-card__keywords">
+            {% assign keywords = item.keywords | split: ',' %}
+            {% for keyword in keywords %}
+            <li>{{ keyword }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+
+        </div>
+
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+
+  <button class="portfolio-carousel__prev"
+          type="button"
+          aria-label="Previous project">←</button>
+
+  <button class="portfolio-carousel__next"
+          type="button"
+          aria-label="Next project">→</button>
+
+  <div class="portfolio-carousel__dots"
+       aria-label="Portfolio navigation">
+  </div>
+</section>

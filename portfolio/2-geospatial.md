@@ -2,31 +2,40 @@
 layout: portfolio
 title: 'Distributed Geospatial Imaging Platform (R&D)'
 from: 10-2015
-to: 2017
+to: 01-2017
 environment: 'Apache Spark, Kafka, MongoDB, AWS, Ceph, Google Cloud, JNI'
+keywords:
+  - spark
+  - s3
+  - aws
+  - ceph
+  - kafka
+  - mongodb
+  - jni
+  - geospatial
 short_description: "Designed a proof of concept for a scalable geospatial data platform exploring efficient ingestion, processing, and serving of large-scale satellite imagery."
 image: portfolio-2.png
 ---
 
-Designed a proof of concept for a scalable geospatial data platform exploring efficient ingestion, processing, and serving of large-scale satellite imagery through a tiled image representation. The architecture supports both near real-time visualization and large-scale asynchronous processing while remaining modular and technology-agnostic.
+Designed and implemented an R&D project focused on exploring scalable approaches for ingesting, processing, and serving large-scale geospatial imagery through a modular tile-based distributed architecture. The project investigated architectural patterns combining near real-time visualization and large-scale asynchronous processing while remaining storage- and technology-agnostic.
 
-## Key responsibilities and achievements
+## Key responsibilities & achievements
 
-- Designed a distributed architecture based on independent services with clear responsibilities across ingestion, processing, storage, and visualization layers
+- Designed a **distributed architecture** composed of loosely coupled services responsible for ingestion, processing, storage, and visualization, enabling each subsystem to evolve independently.
 
-- Built a **Spark** ingestion pipeline to import and pre-process raster datasets, generating optimized tile representations stored in object storage while maintaining separate metadata indexing
+- Built **Apache Spark** ingestion pipelines to import and pre-process large raster datasets, generating optimized tile representations stored in object storage while maintaining dedicated metadata indexes.
 
-- Implemented scalable runtime components to dynamically assemble and render only the data required for each request, minimizing storage access and computation overhead
+- Developed scalable geospatial APIs using **Play Framework** and **Akka** to dynamically assemble and render only the data required for each request, minimizing storage access, network transfers, and computation overhead.
 
-- Designed for performance and resilience through:
-  - Distributed ingestion and parallel processing workflows
-  - Incremental dataset validation
-  - Tile-based storage strategies
-  - Asynchronous execution and caching mechanisms
-  - Low-latency access patterns for interactive applications
+- Engineered the platform for scalability, resilience, and performance through:
+  - Distributed ingestion and parallel processing based on a **Kappa architecture* using **Kafka** and **MongoDB**,
+  - Incremental dataset validation,
+  - Tailor made tile-based storage using S3-compatible **object stores* (AWS S3, Ceph) and Google Cloud Storage,
+  - Asynchronous processing and multi-level caching (Redis, LevelDB),
+  - Low-latency access patterns suitable for interactive geospatial visualization.
 
-- Developed reusable libraries for geospatial algorithms, processing workflows, and image rendering, enabling reuse across web services, distributed Spark jobs, and batch pipelines
+- Developed reusable libraries for geospatial algorithms, image processing, rendering, and workflow orchestration, enabling reuse across REST services, distributed Spark jobs, and batch processing pipelines.
 
-- Integrated heterogeneous technologies including Apache Spark, Kafka, MongoDB, S3/GCS object storage, Akka, Play Framework, and **native C++ image-processing** components through JVM bindings
+- Integrated high-performance native C++ image-processing components through custom **JVM bindings*, combining native execution performance with the JVM ecosystem.
 
-- Established a modular approach to distributed geospatial data platforms, allowing ingestion, processing, storage, and visualization capabilities to evolve independently while sharing common data models, APIs, and infrastructure
+- Validated architectural patterns for modular geospatial data platforms, enabling independent evolution of ingestion, processing, storage, and visualization components while sharing common data models, APIs, and infrastructure.
