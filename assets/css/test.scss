@@ -1,0 +1,172 @@
+---
+---
+
+/* Portfolio carousel */
+.portfolio-carousel {
+  position: relative;
+  width: 100%;
+
+  &__viewport {
+    overflow: hidden;
+  }
+
+  &__track {
+    display: flex;
+    transition: transform 300ms ease-in-out;
+    will-change: transform;
+  }
+
+  &__prev,
+  &__next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 2.5rem;
+    height: 2.5rem;
+
+    border: 0;
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    &.is-hidden {
+      display: none;
+    }
+  }
+
+  &__prev {
+    left: .5rem;
+  }
+
+  &__next {
+    right: .5rem;
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+    margin-top: 1rem;
+  }
+
+  &__dot {
+    width: .6rem;
+    height: .6rem;
+
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+
+    cursor: pointer;
+  }
+}
+
+.portfolio-card {
+  flex: 0 0 100%;
+  box-sizing: border-box;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+
+  &__image {
+    display: block;
+
+    width: 100%;
+    height: 280px;
+
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: 8px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  &__title {
+    margin: 0 0 .5rem;
+    font-size: 1.6rem;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  &__description {
+    max-height: 6rem;
+
+    overflow: hidden;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+
+    line-height: 1.5rem;
+  }
+
+  &__keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: .25rem .6rem;
+      border-radius: 999px;
+      font-size: .85rem;
+    }
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: .4rem;
+    margin-top: 1rem;
+  }
+
+  &__tag {
+    display: inline-flex;
+    align-items: center;
+
+    padding: .25rem .65rem;
+
+    border-radius: 999px;
+
+    font-size: .8rem;
+    line-height: 1.2;
+
+    white-space: nowrap;
+
+    background: rgba(128, 128, 128, .15);
+  }
+}
+
+/* Responsive */
+@media (max-width: 899px) {
+  .portfolio-card {
+    &__image {
+      height: 220px;
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  .portfolio-card {
+    flex-basis: 50%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .portfolio-card {
+    flex-basis: 33.333%;
+  }
+}
