@@ -1,12 +1,4 @@
-<style type="text/css">
-  .parenthesized::before {
-    content: '('
-  }
-
-  .parenthesized::after {
-    content: ')'
-  }
-</style>
+<link rel="stylesheet" href="{{ "/assets/css/main.css?v=" | append: site.github.build_revision | relative_url }}">
 
 {% if page.layout == 'home' or page.enable_github_repo %}
   {% assign enable_github_repo = true %}
