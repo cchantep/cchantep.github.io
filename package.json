@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "scripts": {
+    "minify:js": "node scripts/minify-js.js",
+    "update:js-refs": "node scripts/update-js-refs.js",
+    "hook:pre-push": "yarn minify:js && yarn update:js-refs"
+  },
+  "devDependencies": {
+    "terser": "^5.43.1"
+  }
+}

@@ -11,8 +11,6 @@
   {% assign enable_portfolio = false %}
 {% endif %}
 
-<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-
 {% if enable_github_repo %}
 <link rel="stylesheet" href="{{ "/assets/css/github-repo-card.css?v=" | append: site.github.build_revision | relative_url }}">
 {% endif %}
@@ -22,9 +20,9 @@
 {% endif %}
 
 {% if enable_github_repo %}
-<script src="{{ '/assets/js/github-repo-card.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/github-repo-card.0a60da95f102.js' | relative_url }}" defer></script>
 {% endif %}
 
 {% if enable_portfolio %}
-<script src="{{ '/assets/js/portfolio-carousel.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/portfolio-carousel.bd2ab972952f.js' | relative_url }}" defer></script>
 {% endif %}

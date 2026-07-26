@@ -18,11 +18,11 @@ Designed and evolved a unified data platform for supply chain and product inform
 
 ## Key responsibilities and achievements
 
-- Designed and implemented a distributed event-driven with **Kappa architecture**, enabling continuous synchronization and transformation of business data across heterogeneous source systems
+- Designed and implemented a distributed event-driven with **Kappa architecture**, enabling continuous synchronization and transformation of business data across heterogeneous source systems.
 
-- Built Kafka-based streaming pipelines with **Akka** services to ingest, process, and transform product, inventory, and commercial data into optimized read models
+- Built Kafka-based streaming pipelines with **Akka** services to ingest, process, and transform product, inventory, and commercial data into optimized read models.
 
-- Designed a unified API layer exposing consistent access to business data independently of underlying source systems, simplifying integration for downstream applications
+- Designed a unified API layer exposing consistent access to business data independently of underlying source systems, simplifying integration for downstream applications.
 
 - Optimized platform scalability, reliability, and performance to support daily synchronization of all points of sale within a strict four-hour overnight processing window, including:
   - Performance optimization and endurance testing
@@ -36,6 +36,6 @@ Designed and evolved a unified data platform for supply chain and product inform
   - Collaboration with infrastructure teams on production operations
   - Evaluation of MongoDB for specific data access patterns
 
-- Contributed to technical leadership within a cross-functional squad, collaborating with software engineers, infrastructure specialists, and product owners on architecture decisions, technical trade-offs, and platform evolution
+- Contributed to technical leadership within a cross-functional squad, collaborating with software engineers, infrastructure specialists, and product owners on architecture decisions, technical trade-offs, and platform evolution.
 
-- Established modular architecture principles allowing ingestion, synchronization, storage, and data exposure capabilities to evolve independently while sharing common data models and operational standards
+- Established modular architecture principles allowing ingestion, synchronization, storage, and data exposure capabilities to evolve independently while sharing common data models and operational standards.
