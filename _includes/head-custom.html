@@ -26,7 +26,7 @@
 {% endif %}
 
 {% if enable_portfolio %}
-<link rel="stylesheet" href="{{ '/assets/css/portfolio.css' | relative_url }}">
+<link rel="stylesheet" href="{{ "/assets/css/portfolio.css?v=" | append: site.github.build_revision | relative_url }}">
 {% endif %}
 
 {% if enable_github_repo %}
