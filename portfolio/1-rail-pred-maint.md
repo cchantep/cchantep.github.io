@@ -1,8 +1,8 @@
 ---
 layout: portfolio
 title: 'Railway Predictive Maintenance Platform'
-from: 11-2020
-to: 12-2025
+from: 2020-11-01
+to: 2025-12-19
 environment: 'Apache Spark, Confluent Kafka, Kubernetes, AWS, MongoDB Atlas, Gitlab, CI/CD, Datadog, Distributed Systems'
 short_description: "Led the architecture and delivery of a large-scale predictive maintenance data platform for a major railway operator, processing high-volume telemetry and time-series data."
 keywords:

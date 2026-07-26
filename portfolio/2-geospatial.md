@@ -1,8 +1,8 @@
 ---
 layout: portfolio
 title: 'Distributed Geospatial Imaging Platform (R&D)'
-from: 10-2015
-to: 01-2017
+from: 2015-10-01
+to: 2017-01-30
 environment: 'Apache Spark, Kafka, MongoDB, AWS, Ceph, Google Cloud, JNI'
 keywords:
   - spark

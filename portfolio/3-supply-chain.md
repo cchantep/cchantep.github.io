@@ -1,8 +1,8 @@
 ---
 layout: portfolio
 title: 'Unified Data Platform for Supply Chain & Product Information Management'
-from: 02-2017
-to: 10-2017
+from: 2017-02-01
+to: 2017-10-18
 environment: 'Kafka, Akka, Scala, Cassandra, Elasticsearch, ELK Stack, MongoDB, REST APIs, Distributed Systems, Event-Driven Architecture'
 keywords:
   - akka
