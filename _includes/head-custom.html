@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 
 {% if enable_github_repo %}
-<link rel="stylesheet" href="{{ '/assets/css/github-repo-card.css' | relative_url }}">
+<link rel="stylesheet" href="{{ "/assets/css/github-repo-card.css?v=" | append: site.github.build_revision | relative_url }}">
 {% endif %}
 
 {% if enable_portfolio %}
