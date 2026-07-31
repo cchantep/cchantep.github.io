@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="546"
+   height="112"
+   viewBox="0 0 144.46252 29.633332"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2 (dc2aeda, 2022-05-15)"
+   sodipodi:docname="no-rel-query.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <style
+     id="style26449" />
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     showguides="true"
+     inkscape:zoom="1.3396063"
+     inkscape:cx="357.1945"
+     inkscape:cy="106.37454"
+     inkscape:window-width="1728"
+     inkscape:window-height="955"
+     inkscape:window-x="0"
+     inkscape:window-y="34"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1">
+    <sodipodi:guide
+       position="96.953321,-79.402315"
+       orientation="0,-1"
+       id="guide20711"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="75.735574,-106.51388"
+       orientation="0,-1"
+       id="guide24271"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="149.11875,4.7472894"
+       orientation="1,0"
+       id="guide2665"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="117.31993,-39.692071"
+       orientation="0,-1"
+       id="guide2274"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="93.42142,-46.01234"
+       orientation="1,0"
+       id="guide3432"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="97.766603,-13.225971"
+       orientation="0,-1"
+       id="guide3434"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible"
+       id="Arrow2"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Arrow2"
+       markerWidth="7.6999998"
+       markerHeight="5.5999999"
+       viewBox="0 0 7.7 5.6"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.7)"
+         d="M -2,-4 9,0 -2,4 c 2,-2.33 2,-5.66 0,-8 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         id="arrow2L" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g1284"
+       transform="translate(-29.298441,-0.98754139)">
+      <g
+         id="g3396"
+         transform="translate(-35.698716,-21.249578)">
+        <rect
+           style="fill:#eeeeee;fill-opacity:1;stroke:#676767;stroke-width:0.204001;stroke-linejoin:bevel;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1"
+           id="rect8483"
+           width="139.83586"
+           height="25.478569"
+           x="67.220337"
+           y="24.196543"
+           class="step1" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:Monaco;-inkscape-font-specification:'Monaco, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.264583"
+           x="68.785561"
+           y="29.616348"
+           id="text10672"
+           class="step1"><tspan
+             sodipodi:role="line"
+             id="tspan676"
+             x="68.785561"
+             y="29.616348"
+             style="fill:#000000"><tspan
+   style="fill:#ff5555"
+   id="tspan802">SELECT * FROM</tspan> a_table <tspan
+   style="fill:#ff5555"
+   id="tspan9153">JOIN</tspan> b_table <tspan
+   style="fill:#ff5555"
+   id="tspan744">WHERE</tspan> a_table.pk<tspan
+   style="fill:#ff5555"
+   id="tspan746">=</tspan><tspan
+   style="fill:#008080"
+   id="tspan748">1</tspan>;</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:Monaco;-inkscape-font-specification:'Monaco, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.264583"
+           x="68.785561"
+           y="41.627445"
+           id="text10672-4"
+           class="step1"><tspan
+             sodipodi:role="line"
+             id="tspan676-8"
+             x="68.785561"
+             y="41.627445"
+             style="fill:#000000"><tspan
+   style="fill:#ff5555"
+   id="tspan802-8">SELECT * FROM</tspan> a_table <tspan
+   style="fill:#ff5555"
+   id="tspan744-1">WHERE</tspan> pk<tspan
+   style="fill:#ff5555"
+   id="tspan746-9"></tspan></tspan><tspan
+             sodipodi:role="line"
+             x="68.785561"
+             y="46.919106"
+             style="fill:#000000"
+             id="tspan733"><tspan
+   style="fill:#ff5555"
+   id="tspan735">IN <tspan
+   style="fill:#000000"
+   id="tspan745">(</tspan>SELECT <tspan
+   style="fill:#000000"
+   id="tspan742">id</tspan> FROM <tspan
+   style="fill:#000000"
+   id="tspan740">b_table</tspan> WHERE <tspan
+   style="fill:#000000"
+   id="tspan738">year</tspan>=</tspan><tspan
+   style="fill:#008080"
+   id="tspan748-3">2017</tspan>);</tspan></text>
+      </g>
+    </g>
+    <path
+       style="fill:none;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2)"
+       d="m 84.174429,16.474503 v 17.973253 c -4.624097,6.02624 -11.45419,6.935242 -26.661682,7.143976 -15.207493,0.208734 -39.104705,6.551451 -39.104705,6.551451"
+       id="path3492"
+       sodipodi:nodetypes="cczc"
+       class="step2" />
+    <path
+       style="fill:#ff0000;stroke:#ff0000;stroke-width:0.465;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 61.030055,3.1601325 C 90.063769,7.9003309 90.063769,7.9003309 90.063769,7.9003309"
+       id="path1882" />
+    <path
+       style="fill:#ff0000;stroke:#ff0000;stroke-width:0.465;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 11.356727,21.528401 113.4685,25.281059"
+       id="path1882-5"
+       sodipodi:nodetypes="cc" />
+  </g>
+</svg>
