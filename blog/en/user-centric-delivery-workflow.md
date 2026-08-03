@@ -2,7 +2,9 @@
 layout: post
 title: A User-Centric Delivery Workflow
 date: 2026-06-24
-keywords: delivery, methodology
+keywords:
+  - delivery
+  - methodology
 ---
 
 ### From User Needs to Production: A Practical Delivery Workflow
