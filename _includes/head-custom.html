@@ -19,6 +19,23 @@
 <link rel="stylesheet" href="{{ "/assets/css/portfolio.css?v=" | append: site.github.build_revision | relative_url }}">
 {% endif %}
 
+<style type="text/css">
+{% if page.layout == 'home' %}
+h1 > a {
+  color: var(--color-fg);
+}
+h1 > a:hover {
+  color: var(--color-fg);
+  text-decoration: none;
+  cursor: default;
+}
+{% else %}
+h1 > a::before {
+  content: '⌂ ';
+}
+{% endif %}
+</style>
+
 {% if enable_github_repo %}
 <script src="{{ '/assets/js/github-repo-card.0a60da95f102.js' | relative_url }}" defer></script>
 {% endif %}

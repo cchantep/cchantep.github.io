@@ -226,3 +226,29 @@ body > .markdown-body {
     }
   }
 }
+
+/* ============================================================
+   Article
+   ============================================================ */
+header > .keyword-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+header > .keyword-list li {
+  display: inline;
+  font-family: monospace;
+}
+
+header > .keyword-list li::before {
+  content: "#";
+}
+
+header > .keyword-list li:not(:last-child)::after {
+  content: ", ";
+}
+
+.markdown-body header + p {
+  margin-top: 1em;
+}
