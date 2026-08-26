@@ -30,13 +30,13 @@ What changes with AI is less the distributed architecture itself than the nature
 
 Consider a fairly standard data or backend workflow:
 
-![Input > Job A > Job B > Job C > Output](../../assets/images/distributed-ai-workflow-2.png)
+<img src="../../assets/images/distributed-ai-workflow-2.png" style="width:70%" alt="Input &gt; Job A &gt; Job B &gt; Job C &gt; Output" />
 
 The individual jobs can be distributed and quite sophisticated.
 
 For example:
 
-<img src="../../assets/images/distributed-ai-workflow-3.png" style="width:50%" alt="Data &gt; Spark processing &gt; Feature computation &gt; Model training &gt; Evaluation &gt; Model deployment" />
+<img src="../../assets/images/distributed-ai-workflow-3.png" style="width:30%" alt="Data &gt; Spark processing &gt; Feature computation &gt; Model training &gt; Evaluation &gt; Model deployment" />
 
 The workflow orchestration itself is usually explicit.
 
