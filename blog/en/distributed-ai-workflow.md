@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Traditional Distributed Architecture & AI Workflows
-date: 2026-08-21
+date: 2026-08-26
 keywords:
   - ai
   - distributed
