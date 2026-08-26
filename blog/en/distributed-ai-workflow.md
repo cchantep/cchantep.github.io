@@ -24,7 +24,7 @@ When looking at the architecture rather than the current terminology (not to say
 
 What changes with AI is less the distributed architecture itself than the nature of some of the computations, and sometimes the LLM in the orchestration loop itself.
 
-![Distributed & AI workflows](../../assets/images/distributed-ai-workflow-1.jpg)
+![Distributed & AI workflows](../../assets/images/distributed-ai-workflow-1.png)
 
 ## Starting from a traditional distributed workflow
 
