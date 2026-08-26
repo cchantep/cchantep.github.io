@@ -30,13 +30,13 @@ What changes with AI is less the distributed architecture itself than the nature
 
 Consider a fairly standard data or backend workflow:
 
-<img src="../../assets/images/distributed-ai-workflow-2.png" style="width:70%" alt="Input &gt; Job A &gt; Job B &gt; Job C &gt; Output" />
+<img src="../../assets/images/distributed-ai-workflow-2.png" width="70%" class="fig" alt="Input &gt; Job A &gt; Job B &gt; Job C &gt; Output" />
 
 The individual jobs can be distributed and quite sophisticated.
 
 For example:
 
-<img src="../../assets/images/distributed-ai-workflow-3.png" style="width:30%" alt="Data &gt; Spark processing &gt; Feature computation &gt; Model training &gt; Evaluation &gt; Model deployment" />
+<img src="../../assets/images/distributed-ai-workflow-3.png" width="30%" class="fig" alt="Data &gt; Spark processing &gt; Feature computation &gt; Model training &gt; Evaluation &gt; Model deployment" />
 
 The workflow orchestration itself is usually explicit.
 
@@ -59,7 +59,7 @@ The computation can be deterministic or not, but the workflow structure is gener
 
 Now we can consider:
 
-<img src="../../assets/images/distributed-ai-workflow-4.png" style="width:25%" alt="Document &gt; OCR &gt; LLM &gt; Validation &gt; Database" />
+<img src="../../assets/images/distributed-ai-workflow-4.png" width="25%" class="fig" alt="Document &gt; OCR &gt; LLM &gt; Validation &gt; Database" />
 
 There is an LLM in the workflow, but the workflow itself has not fundamentally changed.
 
@@ -70,7 +70,7 @@ This is an important distinction I think: **using an LLM inside a workflow does 
 
 An LLM can be treated much like another distributed job or service:
 
-<img src="../../assets/images/distributed-ai-workflow-5.png" style="width:30%" alt="Traditional job &gt; LLM service &gt; Traditional job" />
+<img src="../../assets/images/distributed-ai-workflow-5.png" width="30%" class="fig" alt="Traditional job &gt; LLM service &gt; Traditional job" />
 
 The rest of the architecture can remain largely conventional.
 
@@ -80,7 +80,7 @@ The more interesting case is when the LLM is not only performing a computation, 
 
 For example:
 
-<img src="../../assets/images/distributed-ai-workflow-6.png" style="width:30%" alt="Input &gt; Agent A &gt; LLM router &gt; Agent B | Agent C | Agent D" />
+<img src="../../assets/images/distributed-ai-workflow-6.png" width="30%" class="fig" alt="Input &gt; Agent A &gt; LLM router &gt; Agent B | Agent C | Agent D" />
 
 The orchestrator does not necessarily contain all the routing rules anymore.
 
@@ -111,7 +111,7 @@ An LLM can interpret the result and decide which specialist should be involved.
 
 The workflow then becomes:
 
-<img src="../../assets/images/distributed-ai-workflow-7.png" style="width:25%" alt="Agent A &gt; LLM &gt; Agent C &gt; LLM &gt; Agent B &gt; LLM &gt; Done" />
+<img src="../../assets/images/distributed-ai-workflow-7.png" width="25%" class="fig" alt="Agent A &gt; LLM &gt; Agent C &gt; LLM &gt; Agent B &gt; LLM &gt; Done" />
 
 The important change is therefore not simply that an LLM exists somewhere in the system.
 
@@ -133,7 +133,7 @@ The LLM performs one of the steps.
 
 **2. LLM-assisted routing**
 
-<img src="../../assets/images/distributed-ai-workflow-8.png" style="width:50%" alt="A &gt; LLM &gt; B | C | D" />
+<img src="../../assets/images/distributed-ai-workflow-8.png" width="50%" class="fig" alt="A &gt; LLM &gt; B | C | D" />
 
 The LLM helps determine the next step.
 
@@ -145,7 +145,7 @@ The model can determine not only the next step, but potentially a sequence of st
 
 For example:
 
-<img src="../../assets/images/distributed-ai-workflow-9.png" style="width:30%" alt="User request &gt; Agent &gt; &quot;Need customer information&quot; &gt; query_customer &gt; &quot;Need invoices&quot; &gt; query_invoices &gt; &quot;Need contract&quot; &gt; query_contract &gt; &quot;Enough information&quot; &gt; generate_answer" />
+<img src="../../assets/images/distributed-ai-workflow-9.png" width="30%" class="fig" alt="User request &gt; Agent &gt; &quot;Need customer information&quot; &gt; query_customer &gt; &quot;Need invoices&quot; &gt; query_invoices &gt; &quot;Need contract&quot; &gt; query_contract &gt; &quot;Enough information&quot; &gt; generate_answer" />
 
 Here the complete path may not have been known when the workflow started.
 
@@ -174,7 +174,7 @@ In fact, they may become more important because an agent can execute a longer an
 
 A useful architecture can therefore still look like:
 
-<img src="../../assets/images/distributed-ai-workflow-10.png" style="width:40%" alt="AI layer &gt; Workflow layer &gt; Distributed infrastructure" />
+<img src="../../assets/images/distributed-ai-workflow-10.png" width="40%" class="fig" alt="AI layer &gt; Workflow layer &gt; Distributed infrastructure" />
 
 The bottom part does not become obsolete because the top part contains an LLM.
 
@@ -197,7 +197,7 @@ A vector database is still, at its core, a database/index optimized for a partic
 
 Likewise, the basic idea behind RAG is not particularly new:
 
-<img src="../../assets/images/distributed-ai-workflow-11.png" style="width:40%" alt="query &gt; retrieve relevant information &gt; use retrieved information &gt; produce result" />
+<img src="../../assets/images/distributed-ai-workflow-11.png" width="40%" class="fig" alt="query &gt; retrieve relevant information &gt; use retrieved information &gt; produce result" />
 
 Information retrieval systems have been doing something structurally similar for a long time. Search indexes, document stores and ranking systems have traditionally selected a relevant subset of a larger corpus before passing it to the next processing step.
 
@@ -207,7 +207,7 @@ Instead of: `query → search → ranked documents`
 
 we can have:
 
-<img src="../../assets/images/distributed-ai-workflow-12.png" style="width:50%" alt="query &gt; semantic retrieval &gt; relevant documents &gt; LLM &gt; generated answer / next action" />
+<img src="../../assets/images/distributed-ai-workflow-12.png" width="50%" class="fig" alt="query &gt; semantic retrieval &gt; relevant documents &gt; LLM &gt; generated answer / next action" />
 
 The combination is new and powerful, but many of the individual building blocks are not.
 
@@ -256,7 +256,7 @@ It is also useful not to conflate several things that are sometimes all called "
 
 There can be:
 
-<img src="../../assets/images/distributed-ai-workflow-13.png" style="width:70%" alt="Conversation history &gt; exact messages and tool calls; Workflow state &gt; current step, pending operations, results; Long-term memory &gt; information retrieved semantically when useful; Event stream &gt; events and commands exchanged between components" />
+<img src="../../assets/images/distributed-ai-workflow-13.png" width="70%" class="fig" alt="Conversation history &gt; exact messages and tool calls; Workflow state &gt; current step, pending operations, results; Long-term memory &gt; information retrieved semantically when useful; Event stream &gt; events and commands exchanged between components" />
 
 These can use different technologies.
 
@@ -284,7 +284,7 @@ Other systems are more fundamentally concerned with durable execution.
 
 Its interesting property is not specifically that it runs AI agents, but that it can make a long-running workflow durable:
 
-<img src="../../assets/images/distributed-ai-workflow-15.png" style="width:60%" alt="LLM call &gt; tool call -(wait)-&gt; another LLM call &gt; workflow resumes after failure" />
+<img src="../../assets/images/distributed-ai-workflow-15.png" width="60%" class="fig" alt="LLM call &gt; tool call -(wait)-&gt; another LLM call &gt; workflow resumes after failure" />
 
 This is a distributed execution problem that existed before LLMs.
 
@@ -294,7 +294,7 @@ Akka started from the actor model and distributed systems. Today its platform al
 
 An agent can naturally be represented using the same concepts:
 
-<img src="../../assets/images/distributed-ai-workflow-16.png" style="width:60%" alt="Conversation / Agent: persistent state, messages, actions, remote services" />
+<img src="../../assets/images/distributed-ai-workflow-16.png" width="60%" class="fig" alt="Conversation / Agent: persistent state, messages, actions, remote services" />
 
 The fact that an LLM is involved does not make actor semantics, supervision, persistence, messaging, or failure handling irrelevant.
 
@@ -370,7 +370,7 @@ I therefore don't see a sharp boundary between traditional workflows and AI work
 
 There is more of a continuum:
 
-<img src="../../assets/images/distributed-ai-workflow-14.png" style="width: 70%" alt="Deterministic (A → B → C), LLM as a computation (A → LLM → B), LLM-assisted routing (A → LLM → B/C/D) &gt; LLM-driven planning (dynamically chosen sequence)" />
+<img src="../../assets/images/distributed-ai-workflow-14.png" width="70%" class="fig" alt="Deterministic (A → B → C), LLM as a computation (A → LLM → B), LLM-assisted routing (A → LLM → B/C/D) &gt; LLM-driven planning (dynamically chosen sequence)" />
 
 In the end a real system can contain all of these at the same time.
 

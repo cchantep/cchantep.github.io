@@ -1,6 +1,8 @@
 ---
 ---
 
+$mobile-breakpoint: 767px;
+
 /* ============================================================
    Theme variables (GitHub Primer inspired)
    ============================================================ */
@@ -140,6 +142,12 @@ body > .markdown-body {
 
   img {
     background: transparent
+  }
+
+  @media (max-width: #{$mobile-breakpoint}) {
+    img.fig {
+      width: 100%
+    }
   }
 }
 
