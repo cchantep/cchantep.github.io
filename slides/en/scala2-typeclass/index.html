@@ -1,0 +1,673 @@
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        
+
+        <link rel="stylesheet" href="mkslides-assets/reveal-js/dist/reveal.css" />
+
+        
+            <link rel="stylesheet" href="mkslides-assets/reveal-js/dist/theme/black.css" />
+        
+        
+            <link rel="stylesheet" href="mkslides-assets/highlight-js-themes/monokai.css" />
+        
+
+        
+            
+                
+                    <link rel="stylesheet" href="css/slides.css" />
+                
+            
+        
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section data-markdown
+                
+                >
+                    <!-- The markdown must be placed to the whole left to prevent indentation issues like https://github.com/MartenBE/mkslides/issues/52 -->
+                    <textarea data-template>
+# Scala typeclass
+
+<img src="./img/scala-logo.svg" alt="Scala" width="15%" />
+
+(... an experimental journey among that funny stuff)
+
+**Implicit, variance, type constraints & higher kinds**
+
+---
+
+<!-- .slide: class="decomposed" -->
+
+<h2>Typeclass <code>Show</code>:<br /><em>Context (or pretense)</em></h2>
+
+- Consider a supported type without modifying it
+- Specify the behaviour to show a textual representation for the type
+- Basically `T => String`
+- ~Customizable `toString`
+
+<img src="./img/1-commence.gif" alt="Allez, on commence" 
+  style="position:absolute;top:80%;right:0;border-radius:5px" />
+
+---
+
+<!-- .slide: class="decomposition" -->
+
+Usage: 
+
+```scala
+// Scala 2 (compatible Scala 3)
+
+def showAndGo[T](value: T)(implicit show: Show[T]): T = {
+  println(s"DEBUG: ${show(value)}")
+  value
+}
+
+doSomething(showAndGo("foo"))
+```
+
+---
+
+<!-- .slide: class="decomposed" -->
+
+<h2>Typeclass <code>Show</code>:<br /><em>Declaration, factory<br />& basic instances</em></h2>
+
+```scala
+trait Show[T] {
+  def apply(value: T): String
+}
+
+object Show extends DefaultShow {
+  def apply[T](f: T => String): Show[T] = new Show[T] {
+    def apply(value: T): String = f(value)
+  }
+}
+
+// ... Next slide: Default Show
+```
+
+---
+
+<!-- .slide: class="decomposition" -->
+
+```scala
+// Scala 2 (compatible Scala 3)
+sealed trait DefaultShow {
+  implicit object IntShow extends Show[Int] {
+    def apply(value: Int): String = s"int(${value.toString})"
+  }
+
+  implicit def strShow: Show[String] = Show[String](identity)
+}
+```
+
+*See [full source](https://gist.github.com/cchantep/ea3d7cb6b9b2e29209dbc01c0ef83a9f/044fdc4c923057e86b0c088a9cb5bb8dd766dea5)*<br />
+(paste in REPL or [scatie](https://scastie.scala-lang.org/) to try the coming examples)
+
+---
+
+## Implicit resolution
+
+Test resolution of a basic instance, using `implicitly` function:
+
+```scala
+scala> implicitly[Show[String]]
+res: Show[String] = Show$$anon$1@492699bb
+```
+
+<img src="./img/2-super.gif" alt="D'accord, alors ça c'est super... Sinon ?!" />
+
+---
+
+<!-- .slide: class="decomposed" -->
+
+<h2 id="show-any-traversable">Show <em>instance for any <code>Traversable</code></em></h2>
+
+[Naive approach](https://gist.github.com/cchantep/ea3d7cb6b9b2e29209dbc01c0ef83a9f/c54629286e84e6d95b70eca850b67e2f520e215f#file-typeclass-scala-L20): support any `Traversable[A]`, if type `A` is itself provided a `Show[A]` instance
+
+```scala
+implicit def traversableShow[A](
+  implicit w: Show[A]): Show[Traversable[A]] =
+
+  Show[Traversable[A]] { ta =>
+    ta.map(w(_)).mkString
+  }
+```
+
+---
+
+<!-- .slide: class="decomposition" -->
+
+```scala
+scala> Show.traversableShow[String].apply(List("foo"))
+res: String = foo
+
+scala> implicitly[Show[Traversable[String]]]
+res: Show[Traversable[String]] = Show$$anon$1@17952225
+
+scala> implicitly[Show[List[String]]]
+<console>:15: error: could not find implicit value for parameter e: List[String]
+implicitly[Show[List[String]]]
+```
+
+**Cause**: trait `Show[T]` is *invariant*, so even if `List <: Traversable`, `traversableShow` cannot be resolved for.
+
+---
+
+<!-- .slide: class="decomposed" -->
+
+### Let's try a contravariant `Show`
+
+Keep `traversableShow` unchanged as
+
+```scala
+implicit def traversableShow[A](
+  implicit w: Show[A]): Show[Traversable[A]] =
+  Show[Traversable[A]] { ta =>
+    ta.map(w(_)).mkString
+  }
+```
+
+… but [update `Show` trait](https://gist.github.com/cchantep/ea3d7cb6b9b2e29209dbc01c0ef83a9f/1d31023ef041e2167ee168dfd23762dde6497f06#file-typeclass-scala-L1) to be *contravariant*:
+
+```scala
+trait Show[-T/* ⬅️ */] { def apply(value: T): String }
+```
+
+---
+
+<!-- .slide: class="decomposition" -->
+
+Retry the previously failing resolution:
+
+```scala
+scala> implicitly[Show[List[String]]]
+res: Show[List[String]] = Show$$anon$1@3a73d37f
+
+scala> implicitly[Show[List[String]]].apply(List("foo"))
+res: String = foo
+```
+
+![Pas de problème](./img/3-pas-de-probleme-alors.gif)
+
+---
+
+<!-- .slide: class="decomposition" -->
+
+### Resolution issue due to contravariance
+
+Case of [sealed family](https://gist.github.com/cchantep/ea3d7cb6b9b2e29209dbc01c0ef83a9f/revisions#diff-3cd9716191106bf66ee9303d64c5eaeaR28):
+
+```scala
+sealed trait Family
+
+case object Member1 extends Family
+
+case class Member2(v: String) extends Family
+```
+
+---
+
+<!-- .slide: class="decomposition" -->
+
+```scala
+object Family {
+  implicit def show: Show[Family] = Show[Family] {
+    case Member1 => {
+      val show1 = implicitly[Show[Member1.type] /* ⬅️ */
+
+      s"Family(${show1(Member1)})"
+    }
+
+    case m: Member2 => {
+      val show2 = implicitly[Show[Member2]] /* ⬅️ */
+
+      s"Family(${show2(m)})"
+    }
+  }
+}
+```
+
+---
+
+<!-- .slide: class="decomposition" -->
+
+Let's try it ...
+
+```scala
+scala> implicitly[Show[Family]].apply(Member2("foo"))
+java.lang.StackOverflowError
+  at Family$.$anonfun$show$1(<pastie>:44)
+  at Show$$anon$1.apply(<pastie>:17)
+  at Family$.$anonfun$show$1(<pastie>:46)
+  at Show$$anon$1.apply(<pastie>:17)
+```
+
+![Oh, mais quel con](./img/4-con.gif)
+
+---
+
+<!-- .slide: class="decomposed" -->
+
+### Add missing `Show` instances
+
+Declare specific [instances `member1Show` and `member2Show`](https://gist.github.com/cchantep/ea3d7cb6b9b2e29209dbc01c0ef83a9f/0f6870101e76d9c10e89aa62b295fe5e701f704e#file-typeclass-scala-L34), and use them to implement `familyShow`.
+
+```scala
+implicit def member1Show: Show[Member1.type] =
+  Show[Member1.type] { _ => "Member1" }
+
+implicit def member2Show: Show[Member2] =
+  Show[Member2] { m => s"Member2(${m.v})" }
+```
+
+---
+
+<!-- .slide: class="decomposition" -->
+
+… still resolve `familyShow` instead of the more specific instances:
+
+```scala
+scala> implicitly[Show[Member2]].apply(Member2("foo"))
+java.lang.StackOverflowError ⬅️
+  at Show$$anon$1.apply(<pastie>:35)
+  at $anonfun$familyShow$1.apply(<pastie>:45)
+  at $anonfun$familyShow$1.apply(<pastie>:43)
+```
+
+---
+
+<!-- .slide: class="decomposed" -->
+
+### Work around the contravariance issue?
+
+[Update `familyShow`](https://gist.github.com/cchantep/ea3d7cb6b9b2e29209dbc01c0ef83a9f/1b610ac0fe376b32fd25cc2cef5de16c0ff6072d#file-typeclass-scala-L41) to directly call the instances `member{1,2}Show` without implicit resolution:
+
+```scala
+implicit def familyShow: Show[Family] = Show[Family] {
+  case Member1 => s"Family(${member1Show(Member1)})"
+  case m: Member2 => s"Family(${member2Show(m)})"
+}
+```
+
+---
+
+<!-- .slide: class="decomposition" -->
+
+… still not suﬃcient:
+
+```scala
+scala> implicitly[Show[Member2]].apply(Member2("foo"))
+res: String = Family(Member2(foo))
+// ... not “Member2(foo)” from member2Show ⬅️
+```
+
+… still resolve `familyShow` instead of more specific instance (there `member2Show`);
+
+Could be ok, except if we want `x: Member2` (explicitly known a `Member2`) to be encoded with specific `Show`, different from when the same `x` is just known as a `Family` instance.
+
+---
+
+<!-- .slide: class="decomposed" -->
+
+### Better implicit parameters?
+
+With `Show` instances for subtypes resolved as [implicit parameters](https://gist.github.com/cchantep/ea3d7cb6b9b2e29209dbc01c0ef83a9f/38e07bf787412fb39d79256f750f5b12052e7918#file-typeclass-scala-L40), rather than using `implicitly`.
+
+```scala
+implicit def familyShow(
+  implicit _1: Show[Member1.type], // ⬅️
+  _2: Show[Member2]): Show[Family] = Show[Family] {
+  case Member1 => _1.apply(Member1)
+  case m: Member2 => _2.apply(m)
+}
+```
+
+---
+
+<!-- .slide: class="decomposed decomposition" -->
+
+This time, the specific instance is resolved,
+
+```scala
+scala> implicitly[Show[Member2]].apply(Member2("foo"))
+res: String = Member2(foo)
+```
+
+but …
+
+---
+
+<!-- .slide: class="decomposition" -->
+
+… now it’s weird for the parent type `Family`:
+
+```scala
+scala> implicitly[Show[Family]].apply(Member2("foo"))
+res: String = Member2(foo)
+// ... not Family(Member2(foo)) ⬅️
+```
+
+<img src="./img/5-fourbe.gif" width="40%"
+ alt="C'est pas pour rien qu'on m'appelle le fourbe !" />
+
+---
+
+<!-- .slide: class="decomposed" -->
+
+### Implicit objects
+
+Let's try to define [`Show` instances as objects](https://gist.github.com/cchantep/ea3d7cb6b9b2e29209dbc01c0ef83a9f/57e8d4ed632927f33aa4b407e1f7b2e44f6e2e30#file-typeclass-scala-L34):
+
+```scala
+implicit object Member1Show extends Show[Member1.type] {
+  def apply(m: Member1.type): String = "Member1"
+}
+
+implicit object Member2Show extends Show[Member2] {
+  def apply(m: Member2): String = s"Member2(${m.v})"
+}
+
+implicit def familyShow: Show[Family] = Show[Family] {
+  case Member1 => s"Family(${Member1Show(Member1)})"
+  case m: Member2 => s"Family(${Member2Show(m)})"
+}
+```
+
+---
+
+<!-- .slide: class="decomposition" -->
+
+… raise ambiguity issue for implicit resolution
+
+```scala
+scala> implicitly[Show[Member2]]
+<console>:19: error: ambiguous implicit values: ⬅️
+  both object Member2Show in object Family of type Family.Member2Show.type
+  and method familyShow in object Family of type => Show[Family]
+  match expected type Show[Member2]
+    implicitly[Show[Member2]]
+```
+
+<img src="./img/6-veines.gif" width="30%"
+  alt="Ça vous ennuie si je me taille les veines ?" />
+
+---
+
+<!-- .slide: class="decomposed" -->
+
+### Revert to invariant `Show`
+
+```scala
+trait Show[T] {
+  def apply(value: T): String
+}
+```
+
+Then *everything is ok* for sealed family …
+
+<!-- .slide: class="decomposed decomposition" -->
+
+```scala
+scala> implicitly[Show[Member2]].apply(Member2("foo"))
+res: String = Member2(foo)
+
+scala> implicitly[Show[Family]].apply(Member2("foo"))
+res: String = Family(Member2(foo))
+```
+
+---
+
+<!-- .slide: class="decomposition" -->
+
+… but come back to [issue for `traversableShow`](#show-any-traversable):
+
+```scala
+scala> implicitly[Show[List[String]]]
+<console>:15: error: could not find implicit value 
+for parameter e: List[String]
+```
+
+---
+
+<!-- .slide: class="decomposed" -->
+
+### Try generic type constraints for `traversableShow`
+
+Define a Show instance of any [`T <: Traversable[_]`](https://gist.github.com/cchantep/ea3d7cb6b9b2e29209dbc01c0ef83a9f/6e34e6f91cf0710992b81bc1ba62a41f26c540d5#file-typeclass-scala-L20):
+
+```scala
+implicit def traversableShow[A, T <: Traversable[_]](
+  implicit w: Show[A]): Show[T] = ???
+```
+
+---
+
+<!-- .slide: class="decomposition" -->
+
+… but it doesn’t help the implicit resolution:
+
+```scala
+scala> implicitly[Show[List[String]]]
+<console>:15: error: could not find
+implicit value for parameter e: List[String]
+```
+
+![Oh](./img/7-oh.gif)
+
+---
+
+### Higher kinds to the rescue
+
+Specify a `Show` instance of [any `Traversable M`](https://gist.github.com/cchantep/ea3d7cb6b9b2e29209dbc01c0ef83a9f/f79d011434fc50c158d1a97e55450aa6c3241f99#file-typeclass-scala-L22) whose *type constructor* accept one *type parameter*:
+
+```scala
+import scala.language.higherKinds
+
+implicit def traversableShow[A, M[_] <: Traversable[_]/* ⬅️ */](
+  implicit s: Show[A]): Show[M[A]] = sys.error("resolved")
+```
+
+… now the resolution seems ok:
+
+```scala
+scala> implicitly[Show[List[String]]]
+java.lang.RuntimeException: resolved
+```
+
+---
+
+<!-- .slide: class="decomposed" -->
+
+### First implementation with higher kinds
+
+For now `traversableShow` is resolvable but not implemented, let’s give it a first try:
+
+```scala
+implicit def traversableShow[A, M[_] <: Traversable[_]](
+  implicit w: Show[A]): Show[M[A]] = 
+  Show[M[A]] { as: M[A] =>
+    as.map { a: A =>
+      w(a)
+    }.mkString
+  }
+```
+
+---
+
+<!-- .slide: class="decomposed decomposition" -->
+
+… but it fails to compile:
+
+```scala
+error: overloaded method value map with alternatives:
+  [B, That](f: _$1(in type M) => B)(implicit bf: CanBuildFrom[Traversable[_$1(in type M)],B,That])That
+<and>
+  [B, That](f: (some other)_$1(in type M) => B)(implicit bf: CanBuildFrom[Traversable[(some
+other)_$1(in type M)],B,That])That <and>
+  [B, That](f: _$1 => B ⬅️)(implicit bf: CanBuildFrom[Traversable[_$1],B,That])That
+  cannot be applied to (A => String ⬅️)
+```
+
+---
+
+<!-- .slide: class="decomposed decomposition" -->
+
+Different meaning of `_` in type expression `M[_] <: Traversable[_]`,
+
+-  in `M[_]` : type constructor with one unnamed type parameter,
+-  in `Traversable[_]` : similar to `Traversable[Any]`<br /> <small>(like `?` in Java generics, doesn't require `scala.language.higherKinds`)</small>
+
+---
+
+<!-- .slide: class="decomposition" -->
+
+... it lacks of evidence that `_` in `Traversable[_]` can be `A` when using applying `M[A]`.
+
+![Vous suivez sire ?](./img/8-suivez.gif)
+
+---
+
+<!-- .slide: class="decomposed" -->
+
+### Try to make it clearer
+
+Let's [name all the `_`](https://gist.github.com/cchantep/ea3d7cb6b9b2e29209dbc01c0ef83a9f/5134c617cea4f220ff1898777b7daf5ce494e6b0#file-typeclass-scala-L22) to confirm that the diﬀerence of type parameter between `M[_]` and `Traversable[_]` is the error cause.
+
+```scala
+implicit def traversableShow[
+  A, M[B] <: Traversable[C] forSome { type C }](
+  implicit w: Show[A]): Show[M[A]] = Show[M[A]] { as =>
+    as.map { a: A =>
+      w(a)
+    }.mkString
+  }
+```
+
+---
+
+<!-- .slide: class="decomposition" -->
+
+… raise similar compiler error, but clearer:
+
+```scala
+error: overloaded method value map with alternatives:
+  [B, That](f: C(in type M) => B)(implicit bf: CanBuildFrom[Traversable[C(in type M)],B,That])That <and>
+  [B, That](f: (some other)C(in type M) => B)(implicit bf: CanBuildFrom[Traversable[(some other)C(in
+type M)],B,That])That <and>
+  [B, That](f: C => B ⬅️)(implicit bf: CanBuildFrom[Traversable[C],B,That])That
+  cannot be applied to (A => String ⬅️)
+```
+
+---
+
+### Fix high kinds implementations
+
+Specify it with [`M[T] <: Traversable[T]`](https://gist.github.com/cchantep/ea3d7cb6b9b2e29209dbc01c0ef83a9f/30f40ec871f3055d283b5d168e5759b29a62e7d7#file-typeclass-scala-L22) to guarantee that with `M[A]` the `Traversable` operations are parameterized with the “same” `A`.
+
+```scala
+implicit def traversableShow[
+  A, M[T] <: Traversable[T]](
+  implicit w: Show[A]): Show[M[A]] = Show[M[A]] { as =>
+    as.map { a: A =>
+      w(a)
+    }.mkString
+  }
+```
+
+… it compiles, let’s test it ... 🙏
+
+---
+
+### Test the high kinds implementation
+
+First the newly implemented `traversableShow`,
+
+```scala
+scala> implicitly[Show[List[String]]].apply(List("foo"))
+res: String = foo
+
+scala> implicitly[Show[Set[String]]].apply(Set("bar"))
+res: String = bar
+```
+
+… then check there is no regression for the sealed family:
+
+```scala
+scala> implicitly[Show[Member2]].apply(Member2("foo"))
+res: String = Member2(foo)
+
+scala> implicitly[Show[Family]].apply(Member2("foo"))
+res: String = Family(Member2(foo))
+```
+
+---
+
+### Finally everything is ok
+
+![Wow](./img/9-wow.gif)
+
+---
+
+## Some usefuls readings
+
+<div style="font-size:smaller">
+
+- [Be friend with covariance and contravariance](http://julien.richard-foy.fr/blog/2013/02/21/be-friend-with-covariance-and-contravariance/); Julien Richard-Foy (21/2/2013)
+- [SI-2509](https://issues.scala-lang.org/browse/SI-2509): Contravariance mucks with implicit resolution;<br />Created on issue.scala-lang.org 10/2009, updated 8/2016; Open/unresolved
+- [End the blight of contravariance](https://groups.google.com/forum/#!topic/scala-language/ZE83TvSWpT4); Scala-language Google group (5/2012)
+- [Implicit Resolution with Contravariance](https://stackoverflow.com/a/21921296); StackOverflow (2/2014)
+- The [Play-JSON Pull Request](https://github.com/playframework/play-json/pull/216/) that has inspired those slides
+
+</div>
+                    </textarea>
+                </section>
+            </div>
+        </div>
+        <script src="mkslides-assets/reveal-js/dist/reveal.js"></script>
+        <script src="mkslides-assets/reveal-js/dist/plugin/highlight.js"></script>
+        <script src="mkslides-assets/reveal-js/dist/plugin/markdown.js"></script>
+        <script src="mkslides-assets/reveal-js/dist/plugin/math.js"></script>
+        <script src="mkslides-assets/reveal-js/dist/plugin/notes.js"></script>
+        <script src="mkslides-assets/reveal-js/dist/plugin/search.js"></script>
+        <script src="mkslides-assets/reveal-js/dist/plugin/zoom.js"></script>
+
+        
+            
+                
+            
+        
+
+        <script>
+            Reveal.initialize({
+                
+                    
+                        history: true,
+                    
+                        slideNumber: "c/t",
+                    
+                
+                plugins: [
+                    RevealMarkdown, // Must come before the other plugins so they can hook into the generated HTML.
+                    RevealHighlight,
+                    RevealMath.KaTeX,
+                    RevealNotes,
+                    RevealSearch,
+                    RevealZoom,
+
+                    
+                        
+                            
+                        
+                    
+                ],
+            });
+        </script>
+    </body>
+</html>
