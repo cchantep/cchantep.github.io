@@ -1,0 +1,71 @@
+:root {
+  --r-link-color: red !important;
+  --r-link-color-hover: #a6e22e !important;
+}
+
+/* Transition */
+.reveal .slides section.decomposed,
+.reveal .slides section.decomposition {
+  transition: none;
+}
+
+/* Slides */
+.reveal h2 > em {
+  font-style: normal;
+  color: red;
+  text-transform: none;
+}
+
+.didascalie > h2 {
+  line-height: 0.8em;
+  -webkit-text-stroke: 2px #bc5e34;
+  text-align: left;
+  position: relative;
+  top: +1em;
+  z-index: 1000;
+}
+
+/* Images */
+.img-container {
+  position: relative;
+  text-align: center;
+}
+
+.img-container > img {
+  width: 100%;
+}
+
+.img-container > div {
+  position: absolute;
+}
+
+/* List */
+.reveal li > small,
+.reveal p > small {
+  vertical-align: middle;
+}
+
+li.focused {
+  list-style: none;
+  margin-left: -4%;
+}
+
+li.focused::before {
+  content: '▶ ';
+  color: red;
+}
+
+li.focused > strong {
+  text-shadow: red 1px 0 10px;
+}
+
+li.expanded > strong {
+  text-decoration: underline red;
+}
+
+/* Quotes */
+section > blockquote {
+  text-align: justify;
+  padding: .5em;
+  border-left: 1px solid #fff;
+}
