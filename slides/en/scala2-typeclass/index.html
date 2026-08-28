@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -220,7 +218,7 @@ case class Member2(v: String) extends Family
 object Family {
   implicit def show: Show[Family] = Show[Family] {
     case Member1 => {
-      val show1 = implicitly[Show[Member1.type] /* ⬅️ */
+      val show1 = implicitly[Show[Member1.type]] /* ⬅️ */
 
       s"Family(${show1(Member1)})"
     }
