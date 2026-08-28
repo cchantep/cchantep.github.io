@@ -9,4 +9,4 @@ I combine deep hands-on engineering expertise with architectural vision, technic
 ## 🖥️ Slides
 
 - *["Cassandra ... or not"](./slides/en/cassandra/) `#database` `#architecture` `#distributed` (2026/8/1 - *update*) [[🇫🇷](./slides/fr/cassandra/)]
-- *[Scala 3 typeclass](./slides/en/scala3-typeclass/) `#scala` `#typeclass` (2026/8/28)
+- *[Scala 3 typeclass](./slides/en/scala3-typeclass/) `#scala` `#typeclass` (2026/8/28) [<a href="./slides/en/scala2-typeclass/" style="font-size:small;font-style:italic">Scala 2</a>]
